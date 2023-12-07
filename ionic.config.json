@@ -1,0 +1,7 @@
+{
+  "name": "CineVista",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
