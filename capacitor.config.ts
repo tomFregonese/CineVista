@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'CineVista',
+  appId: 'chamanier.fregonese.cinevista',
+  appName: 'Ciné vista',
   webDir: 'www',
   server: {
     androidScheme: 'https'
