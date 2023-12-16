@@ -2,10 +2,8 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
-
+        <ion-list-header>Ciné vista</ion-list-header>
+        <ion-list id="discover-list">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
@@ -13,15 +11,14 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item id="settings-item" routerDirection="root" [routerLink]="['folder/Settings']" lines="none"
+                    detail="false"
+                    routerLinkActive="selected">
+            <ion-icon aria-hidden="true" slot="start" [ios]="'cog-outline'" [md]="'cog-sharp'"></ion-icon>
+            <ion-label>Settings</ion-label>
           </ion-item>
-        </ion-list>
+        </ion-menu-toggle>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

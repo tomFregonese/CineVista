@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ciné vista</string>
+    <string name="title_activity_main">Ciné vista</string>
+    <string name="package_name">chamanier.fregonese.cinevista</string>
+    <string name="custom_url_scheme">chamanier.fregonese.cinevista</string>
+</resources>
