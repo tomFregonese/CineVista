@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Carte pour modifier le thème d'affichage -->
+  <ion-card class="settings-card">
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label class="settings-label"><b>Modifier le thème d'affichage</b></ion-label>
+        <div class="theme-toggle">
+          <ion-button>D</ion-button>
+          <ion-button>L</ion-button>
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Carte pour modifier la langue -->
+  <ion-card class="settings-card">
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label class="settings-label"><b>Modifier la langue</b></ion-label>
+        <div class="language-toggle">
+          <ion-button><ion-icon src="/path/to/french-flag.svg"></ion-icon>FR</ion-button>
+          <ion-button><ion-icon src="/path/to/british-flag.svg"></ion-icon>EN</ion-button>
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+
+    <ion-card-content>
+      <ion-button expand="block" color="light"><b>Contacter le support</b></ion-button>
+      <ion-button expand="block" color="light"><b>Redémarrer l'application</b></ion-button>
+    </ion-card-content>
+
+
+</ion-content>
+
+
+<ion-footer>
+  <div class="footer-content">
+    <p>Conditions d'utilisation et politique de confidentialité.</p>
+    <p class="version">v1.0</p>
+  </div>
+</ion-footer>
