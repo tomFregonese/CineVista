@@ -22,11 +22,11 @@ ion-menu.md ion-note {
   padding-left: 10px;
 }
 
-ion-menu.md ion-list#inbox-list {
+ion-menu.md ion-list#discover-list {
   border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
 }
 
-ion-menu.md ion-list#inbox-list ion-list-header {
+ion-menu.md ion-list#discover-list ion-list-header {
   font-size: 22px;
   font-weight: 600;
 
@@ -116,4 +116,17 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+//Permet de laisser une marge pour ne pas commencer à afficher dans l'encoche du téléphone (à partir de l'iPhone X)
+ion-menu {
+  margin-top: env(safe-area-inset-top);
+}
+
+#settings-item {
+  position: absolute;
+  bottom: env(safe-area-inset-bottom);
+  left: 0;
+  right: 0;
+
 }

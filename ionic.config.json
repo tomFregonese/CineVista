@@ -3,5 +3,8 @@
   "integrations": {
     "capacitor": {}
   },
+  "ios": {
+    "contentInset": "always"
+  },
   "type": "angular"
 }
