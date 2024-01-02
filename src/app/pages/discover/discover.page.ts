@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DiscoverService} from '../../services/discover.service';
+import {SeriesPage} from '../series/series.page';
 
 @Component({
   selector: 'app-discover',
@@ -9,13 +10,14 @@ import {DiscoverService} from '../../services/discover.service';
 export class DiscoverPage implements OnInit {
 
   constructor(private service: DiscoverService) { }
+  protected list: any;
 
   ngOnInit() {
     this.service.getTrendingAll().subscribe(response => {
       console.log(response);
-
-      // Faites ce que vous voulez avec la réponse (par exemple, affectez-la à une variable dans votre composant)
+      this.list = response.results;
     });
   }
 
+  protected readonly SeriesPage = SeriesPage;
 }

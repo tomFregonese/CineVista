@@ -9,12 +9,11 @@ import {SeriesService} from '../../services/series.service';
 export class SeriesPage implements OnInit {
 
   constructor(private service: SeriesService) { }
-
+  public list: any;
   ngOnInit() {
     this.service.getTrendingSeries().subscribe(response => {
       console.log(response);
-
-      // Faites ce que vous voulez avec la réponse (par exemple, affectez-la à une variable dans votre composant)
+      this.list = response.results;
     });
   }
 }

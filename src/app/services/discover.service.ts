@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TMDB_BASE_URL, API_KEY } from 'src/environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscoverService {
 
-  private tmdbBaseUrl = TMDB_BASE_URL
-  private apiKey = API_KEY
+  private tmdbBaseUrl = environment.TMDB_BASE_URL
+  private apiKey = environment.API_KEY
 
   constructor(private httpClient: HttpClient) { }
 

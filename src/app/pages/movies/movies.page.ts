@@ -9,12 +9,12 @@ import {MoviesService} from '../../services/movies.service';
 export class MoviesPage implements OnInit {
 
   constructor(private service: MoviesService) { }
+  private list: any;
 
   ngOnInit() {
     this.service.getTrendingMovies().subscribe(response => {
       console.log(response);
-
-      // Faites ce que vous voulez avec la réponse (par exemple, affectez-la à une variable dans votre composant)
+      this.list = response.results;
     });
   }
 
