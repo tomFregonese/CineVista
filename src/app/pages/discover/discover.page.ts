@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DiscoverService} from '../../services/discover.service';
 import {SeriesPage} from '../series/series.page';
+import {TmdbService} from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-discover',
@@ -9,7 +9,7 @@ import {SeriesPage} from '../series/series.page';
 })
 export class DiscoverPage implements OnInit {
 
-  constructor(private service: DiscoverService) { }
+  constructor(private service: TmdbService) { }
   protected list: any;
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SeriesService} from '../../services/series.service';
+import {TmdbService} from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-series',
@@ -8,7 +8,7 @@ import {SeriesService} from '../../services/series.service';
 })
 export class SeriesPage implements OnInit {
 
-  constructor(private service: SeriesService) { }
+  constructor(private service: TmdbService) { }
   public list: any;
   ngOnInit() {
     this.service.getTrendingSeries().subscribe(response => {

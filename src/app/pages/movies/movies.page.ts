@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MoviesService} from '../../services/movies.service';
+import {TmdbService} from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-movies',
@@ -8,7 +8,7 @@ import {MoviesService} from '../../services/movies.service';
 })
 export class MoviesPage implements OnInit {
 
-  constructor(private service: MoviesService) { }
+  constructor(private service: TmdbService) { }
   private list: any;
 
   ngOnInit() {
