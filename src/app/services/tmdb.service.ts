@@ -46,7 +46,5 @@ export class TmdbService {
     return this.httpClient.get(url, { headers });
   }
 
-  //getSearchResults(query: string, type:string): Observable<any> {
-    //
-  //}
+
 }

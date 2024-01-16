@@ -2,7 +2,12 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list-header>Ciné vista</ion-list-header>
+        <ion-list-header>
+          <picture> 
+            <source srcset="assets/images/hello.webp" type="image/webp" />
+            <img src="/src/assets/images/logo.png"/>
+          </picture>
+          Ciné vista</ion-list-header>
         <ion-list id="discover-list">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
