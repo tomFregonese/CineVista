@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TmdbService} from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-movies',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesPage implements OnInit {
 
-  constructor() { }
+  constructor(private service: TmdbService) { }
+  protected movies!: any[];
 
   ngOnInit() {
+    this.service.getDiscover('movie').subscribe(response => {
+      console.log(response);
+      this.movies = response.results;
+    });
   }
 
 }
