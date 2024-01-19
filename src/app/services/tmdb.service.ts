@@ -18,20 +18,14 @@ export class TmdbService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getTrendingAll(): Observable<any> {
-    const url = `${this.tmdbBaseUrl}/trending/all/day?language=en-US`;
+  getTrending(trendingSearchType: 'all' | 'movie' | 'tv'): Observable<any> {
+    const url = `${this.tmdbBaseUrl}/3/trending/${trendingSearchType}/day?language=en-US`;
 
     return this.httpClient.get(url, { headers: this.headers });
   }
 
-  getTrendingMovies(): Observable<any> {
-    const url = `${this.tmdbBaseUrl}/trending/movie/day?language=en-US`;
-
-    return this.httpClient.get(url, { headers: this.headers });
-  }
-
-  getTrendingSeries(): Observable<any> {
-    const url = `${this.tmdbBaseUrl}/trending/tv/day?language=en-US`;
+  getDiscover(discoverSearchType: 'movie' | 'tv'): Observable<any> {
+    const url = `${this.tmdbBaseUrl}/3/discover/${discoverSearchType}`;
 
     return this.httpClient.get(url, { headers: this.headers });
   }

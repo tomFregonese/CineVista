@@ -15,11 +15,11 @@ export class SeriesPage implements OnInit {
   }
 
   constructor(private service: TmdbService) { }
-  public list: any;
+  public series!: any[];
   ngOnInit() {
-    this.service.getTrendingSeries().subscribe(response => {
+    this.service.getDiscover('tv').subscribe(response => {
       console.log(response);
-      this.list = response.results;
+      this.series = response.results;
     });
   }
 }

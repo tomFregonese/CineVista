@@ -9,13 +9,14 @@ import {TmdbService} from '../../services/tmdb.service';
 })
 export class DiscoverPage implements OnInit {
 
-  constructor(private service: TmdbService) { }
-  protected list: any;
+  protected medias!: any[];
+
+  constructor(private _tmdbService: TmdbService) { }
 
   ngOnInit() {
-    this.service.getTrendingAll().subscribe(response => {
+    this._tmdbService.getTrending('all').subscribe(response => {
       console.log(response);
-      this.list = response.results;
+      this.medias = response.results;
     });
   }
 

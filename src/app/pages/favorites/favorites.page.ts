@@ -9,7 +9,9 @@ export class FavoritesPage implements OnInit {
 
   constructor() { }
 
+  public favorites!: any[];
   ngOnInit() {
+    this.favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
   }
 
 }

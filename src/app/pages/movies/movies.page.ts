@@ -9,12 +9,12 @@ import {TmdbService} from '../../services/tmdb.service';
 export class MoviesPage implements OnInit {
 
   constructor(private service: TmdbService) { }
-  private list: any;
+  protected movies!: any[];
 
   ngOnInit() {
-    this.service.getTrendingMovies().subscribe(response => {
+    this.service.getDiscover('movie').subscribe(response => {
       console.log(response);
-      this.list = response.results;
+      this.movies = response.results;
     });
   }
 
