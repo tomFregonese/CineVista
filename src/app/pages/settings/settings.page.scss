@@ -60,6 +60,10 @@
 }
 
 ion-footer{
+  bottom:0;
+  text-align: center;
+  color: var(--ion-color-medium);
+  padding: 20px;
   font-size: 12px;
   background-color: white;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0);

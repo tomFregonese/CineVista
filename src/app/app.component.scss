@@ -130,3 +130,9 @@ ion-menu {
   right: 0;
 
 }
+
+.logo::part(image) {
+  width: 30px;
+  margin-right: 10px;
+  border-radius:30px ;
+}
