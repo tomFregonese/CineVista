@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {FavoritesService} from '../../services/favorites.service';
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage {
 
-  constructor() { }
-
-  public favorites!: any[];
-  ngOnInit() {
-    this.favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-  }
+  constructor(protected favoritesService: FavoritesService) { }
 
 }

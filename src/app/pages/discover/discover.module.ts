@@ -8,6 +8,7 @@ import { DiscoverPageRoutingModule } from './discover-routing.module';
 
 import { DiscoverPage } from './discover.page';
 import {LittlePostersComponent} from '../../components/little-posters/little-posters.component';
+import {FavButtonComponent} from '../../components/fav-button/fav-button.component';
 
 @NgModule({
   imports: [
@@ -16,9 +17,10 @@ import {LittlePostersComponent} from '../../components/little-posters/little-pos
     IonicModule,
     DiscoverPageRoutingModule
   ],
-  exports: [
-    LittlePostersComponent
-  ],
-  declarations: [DiscoverPage, LittlePostersComponent]
+    exports: [
+        LittlePostersComponent,
+        FavButtonComponent
+    ],
+    declarations: [DiscoverPage, LittlePostersComponent, FavButtonComponent]
 })
 export class DiscoverPageModule {}
