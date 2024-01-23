@@ -6,6 +6,7 @@
 
 
 
+
   ion-card-content {
     display: flex;
     background-color: var(--ion-color-light);
@@ -15,7 +16,6 @@
       --padding-end: 0;
       --inner-padding-end: 0;
       --inner-border-width: 0; // Supprime les bordures intérieures
-      --border-radius: 20px; // Bordures arrondies pour les éléments ion-item
       width: 100%; // Assure que l'ion-item prend toute la largeur
       display: flex;
       flex-direction: column; // Organise les enfants de l'ion-item en colonne
@@ -25,6 +25,21 @@
       .ion-label {
         margin-bottom: 16px; // Espace entre le label et la ligne de boutons
       }
+      ion-segment {
+        --background: lightgrey;
+        border-radius:12px;
+        ion-segment-button {
+          // Pour changer la couleur des labels, utilisez ces variables CSS
+          --color: black; // Couleur par défaut
+          --color-checked: black; // Couleur lorsque le bouton est sélectionné
+          font-weight: bold;
+        }
+        ion-segment-button.ios::part(indicator-background) {
+          border-radius: 12px;
+        }
+
+      }
+
     }
   }
 
@@ -38,11 +53,18 @@
     ion-button {
       margin: 0 5px; // Espace entre les boutons
       width:40px;
+      font-weight: bold;
+      // background
+      --background: lightgrey;
+      // les couleurs noirs pour les backgrounds
+      --background : black;
+      --background-hover: lightgrey;
+      --background-activated: lightgrey;
+      --color-hover: black;
+
     }
   }
 }
-
-
 
 
 .version {
@@ -62,10 +84,25 @@
 ion-footer{
   bottom:0;
   text-align: center;
-  color: var(--ion-color-medium);
   padding: 20px;
   font-size: 12px;
-  background-color: white;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0);
 }
 
+ion-avatar{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: black;
+  // center avatar
+
+}
+
+ion-grid{
+  margin-left: 5px;
+  margin-right: 5px;
+}
