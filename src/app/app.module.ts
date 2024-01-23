@@ -10,8 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
 import { ViewDetailsComponent } from './components/view-details/view-details.component';
+import { NgOptimizedImage } from '@angular/common';
+import {DiscoverPageModule} from './pages/discover/discover.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -20,13 +22,21 @@ export function HttpLoaderFactory(http: HttpClient) {
 // @ts-ignore
 @NgModule({
   declarations: [AppComponent, ViewDetailsComponent], // Ajoutez ViewDetailsComponent ici
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
-  })],
+    imports: [BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        NgOptimizedImage,
+        DiscoverPageModule,
+        IonicStorageModule.forRoot()
+    ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
