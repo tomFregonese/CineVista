@@ -33,6 +33,10 @@
           --color: black; // Couleur par défaut
           --color-checked: black; // Couleur lorsque le bouton est sélectionné
           font-weight: bold;
+                  // pour centrer les boutons
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
         ion-segment-button.ios::part(indicator-background) {
           border-radius: 12px;
