@@ -1,0 +1,16 @@
+button{
+  background: none;
+}
+
+.heart, .heart-outline{
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.heart{
+  color: #ff0000;
+}
+
+.heart-outline{
+    color: #000000;
+}
