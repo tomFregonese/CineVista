@@ -16,7 +16,7 @@
 
   <ion-avatar (click)="takeOrChoosePhoto()">
 
-    <img [src]="avatarUrl" />
+    <img [src]="profilePictureUrl" />
 
   </ion-avatar>
 
@@ -26,11 +26,12 @@
     <ion-card-content>
       <ion-item lines="none">
         <ion-label class="settings-label"><b>Modifier le thème par défaut</b></ion-label>
+        <!--<ion-segment [(ngModel)]="theme" (ionChange)="toggleTheme(theme)">-->
         <ion-segment [(ngModel)]="theme">
           <ion-segment-button value="light">
             <ion-label>Clair</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="system">
+          <ion-segment-button value="auto">
             <ion-label>Système</ion-label>
           </ion-segment-button>
           <ion-segment-button value="dark">
@@ -62,6 +63,7 @@
       </ion-col>
       <ion-col size="9">
         <ion-button (click)="loadingRestart()" expand="block" color="light"><b>Redémarrer l'application</b></ion-button>
+        <p id="countdown"></p>
       </ion-col>
     </ion-row>
   </ion-grid>

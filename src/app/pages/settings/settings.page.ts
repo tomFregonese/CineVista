@@ -1,7 +1,6 @@
-  import { Component } from '@angular/core';
-  import { LoadingController } from '@ionic/angular';
-  import { Router } from '@angular/router';
+  import {Component} from '@angular/core';
   import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+  import {ThemeService} from '../../services/theme.service';
 
   @Component({
     selector: 'app-settings',
@@ -10,53 +9,36 @@
   })
 
   export class SettingsPage {
-    // Propriété pour stocker le thème actuel
-    theme: string = 'light'; // Valeur par défaut pour le thème
-    avatarUrl: string | null = null; //  propriété avatarUrl
+    theme: 'dark' | 'light' | 'auto' = 'auto';
+    profilePictureUrl: string | null = null;
 
     constructor(
-      private loadingCtrl: LoadingController,
-      private router: Router
-    ) {
-      // Chargez le thème préféré de l'utilisateur au démarrage
-      this.loadPreferredTheme();
-    }
+      private themeService : ThemeService
+    ) {}
 
 
-    // Méthode pour charger le thème préféré de l'utilisateur
-    loadPreferredTheme() {
-      const savedTheme = localStorage.getItem('preferredTheme') || 'light'; // 'light' est la valeur par défaut
-      this.theme = savedTheme;
-      // Appliquez le thème ici, si nécessaire
-    }
+    /*toggleTheme(theme: 'dark' | 'light' | 'auto') {
+      this.themeService.setTheme(theme)
+    }*/
 
-    // Méthode pour gérer le changement de thème
-    onThemeChange(selectedTheme: string) {
-      this.theme = selectedTheme;
-      this.savePreferredTheme(selectedTheme);
-      // Appliquez le thème ici, si nécessaire
-    }
-
-    // Méthode pour sauvegarder le thème préféré de l'utilisateur
-    savePreferredTheme(theme: string) {
-      localStorage.setItem('preferredTheme', theme);
-    }
-
-    // Méthode pour redémarrer l'application
     async loadingRestart() {
-      const loading = await this.loadingCtrl.create({
-        message: 'Redémarrage dans 3 secondes...',
-        duration: 3000,
-      });
+      let countdown = 3;
 
-      await loading.present();
+      const countdownElement = document.getElementById('countdown');
+      if (countdownElement) {
+        countdownElement.innerText = `Redémarrage dans ${countdown} secondes...`;
+      }
 
-      loading.onDidDismiss().then(() => {
-        // Définir un paramètre dans le stockage local avant de recharger
-        localStorage.setItem('navigateToDiscover', 'true');
-        // Recharger l'application
-        window.location.reload();
-      });
+      const intervalId = setInterval(() => {
+        countdown--;
+        if (countdown >= 0 && countdownElement) {
+          countdownElement.innerText = `Redémarrage dans ${countdown} secondes...`;
+        } else {
+          clearInterval(intervalId);
+          localStorage.setItem('navigateToDiscover', 'true');
+          window.location.reload();
+        }
+      }, 1000);
     }
 
     async takeOrChoosePhoto() {
@@ -72,7 +54,7 @@
 
         // Vérifiez si image.dataUrl n'est pas undefined avant de l'assigner
         if (image.dataUrl) {
-          this.avatarUrl = image.dataUrl;
+          this.profilePictureUrl = image.dataUrl;
         } else {
           // Gérez le cas où aucune image n'est retournée
           console.log("Aucune image sélectionnée ou erreur lors de la prise de photo");
