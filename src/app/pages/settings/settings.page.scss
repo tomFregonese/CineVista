@@ -1,11 +1,12 @@
+ion-content {
+  --overflow: hidden;
+}
 
 .settings-card {
 
+
   width:auto;
   margin: 10px 18.5px;
-
-
-
 
   ion-card-content {
     display: flex;
