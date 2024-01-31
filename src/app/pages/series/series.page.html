@@ -13,5 +13,5 @@
       <ion-title size="large">Series</ion-title>
     </ion-toolbar>
   </ion-header>
-<app-little-posters [medias]="series"></app-little-posters>
+    <app-little-posters [medias]="series" (ionInfinite)="loadMoreMedias($event)"></app-little-posters>
 </ion-content>

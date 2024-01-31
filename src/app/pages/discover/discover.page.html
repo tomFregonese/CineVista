@@ -13,6 +13,5 @@
             <ion-title size="large">Discover</ion-title>
         </ion-toolbar>
     </ion-header>
-    <app-little-posters [medias]="medias"></app-little-posters>
-    <!-- Automatisation pour charger plus de films -->
+    <app-little-posters [medias]="medias" (ionInfinite)="loadMoreMedias($event)"></app-little-posters>
 </ion-content>
