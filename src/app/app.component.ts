@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {StorageService} from './services/storage.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +17,22 @@ export class AppComponent implements OnInit {
     { title: 'Profile', url: '/profile', icon: 'person-circle' }
   ];
 
-  constructor(private router: Router) {}
+  username!: string ;
+  oUsername! : Observable<string>;
+
+  constructor(private router: Router, private storageService: StorageService) {
+    //this.storageService.currentUsername.subscribe(username => this.username = username);
+    this.oUsername = this.storageService.currentUsername;
+  }
+
 
   ngOnInit() {
-    // Check if the application needs to navigate to '/discover'
+    this.storageService.currentUsername.subscribe(username => this.username = username);
+
     if (localStorage.getItem('navigateToDiscover') === 'true') {
       localStorage.removeItem('navigateToDiscover'); // Clear the flag
       this.router.navigate(['/discover']);
     }
   }
+
 }

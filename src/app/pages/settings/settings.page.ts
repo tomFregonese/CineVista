@@ -2,6 +2,7 @@
   import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   import {ThemeService} from '../../services/theme.service';
   import {ToastController} from '@ionic/angular';
+  import {StorageService} from '../../services/storage.service';
 
   @Component({
     selector: 'app-settings',
@@ -10,10 +11,11 @@
   })
 
   export class SettingsPage {
+    username = localStorage.getItem('username');
     theme: 'dark' | 'light' | 'auto' = 'auto';
     profilePicture : any = 'assets/images/default-picture-profile.jpeg';
 
-    constructor(private themeService : ThemeService, private toastController: ToastController) {
+    constructor(private themeService : ThemeService, private toastController: ToastController, private storageService: StorageService) {
       if (localStorage.getItem('profilePicture')) {
         this.profilePicture = localStorage.getItem('profilePicture');
       }
@@ -23,6 +25,14 @@
       this.themeService.setTheme(theme)
     }*/
 
+    onUsernameChange() {
+      if (this.username) {
+        localStorage.setItem('username', this.username);
+      } else {
+        localStorage.removeItem('username');
+      }
+      this.storageService.onChangeUsername();
+    }
 
     async presentToast() {
       const toast = await this.toastController.create({

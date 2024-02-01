@@ -80,11 +80,13 @@ ion-content {
 
 
 .footer-content{
+  position: fixed;
   bottom:0;
   text-align: center;
   color: var(--ion-color-medium);
   padding: 20px;
 }
+
 
 ion-footer{
   bottom:0;

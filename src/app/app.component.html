@@ -4,7 +4,8 @@
       <ion-content>
         <ion-list-header>
           <ion-img class="logo" src="../../assets/images/logo.png" alt="Logo de l'app"></ion-img>
-          Ciné vista
+            <p>Ciné vista </p>
+            <p *ngIf="username"> — {{ username }}</p>
         </ion-list-header>
         <ion-list id="discover-list">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

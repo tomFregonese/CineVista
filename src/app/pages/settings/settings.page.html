@@ -17,6 +17,10 @@
     <ion-avatar (click)="takeOrChoosePhoto()">
         <img [src]="profilePicture" alt="Profile Picture" />
     </ion-avatar>
+    <ion-item class="ion-text-center width-50">
+        <ion-input type="text" [(ngModel)]="username" (ngModelChange)="onUsernameChange()"
+                   placeholder="Nom"></ion-input>
+    </ion-item>
 
 
   <!-- Carte pour modifier le thème d'affichage -->
