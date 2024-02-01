@@ -1,6 +1,7 @@
   import {Component} from '@angular/core';
   import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   import {ThemeService} from '../../services/theme.service';
+  import {ToastController} from '@ionic/angular';
 
   @Component({
     selector: 'app-settings',
@@ -12,7 +13,7 @@
     theme: 'dark' | 'light' | 'auto' = 'auto';
     profilePicture : any = 'assets/images/default-picture-profile.jpeg';
 
-    constructor(private themeService : ThemeService) {
+    constructor(private themeService : ThemeService, private toastController: ToastController) {
       if (localStorage.getItem('profilePicture')) {
         this.profilePicture = localStorage.getItem('profilePicture');
       }
@@ -23,25 +24,19 @@
     }*/
 
 
-    async loadingRestart() {
-      let countdown = 3;
-
-      const countdownElement = document.getElementById('countdown');
-      if (countdownElement) {
-        countdownElement.innerText = `Redémarrage dans ${countdown} secondes...`;
-      }
-
-      const intervalId = setInterval(() => {
-        countdown--;
-        if (countdown >= 0 && countdownElement) {
-          countdownElement.innerText = `Redémarrage dans ${countdown} secondes...`;
-        } else {
-          clearInterval(intervalId);
-          localStorage.setItem('navigateToDiscover', 'true');
-          window.location.reload();
-        }
-      }, 1000);
+    async presentToast() {
+      const toast = await this.toastController.create({
+        message: 'Redémarrage de l\'application !',
+        duration: 1500,
+        position: 'bottom',
+      });
+      toast.onDidDismiss().then(() => {
+        localStorage.setItem('navigateToDiscover', 'true');
+        window.location.reload();
+      });
+      await toast.present();
     }
+
 
 
     async takeOrChoosePhoto() {
