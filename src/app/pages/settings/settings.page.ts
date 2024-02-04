@@ -1,4 +1,4 @@
-  import {Component} from '@angular/core';
+  import {Component, OnInit} from '@angular/core';
   import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   import {ThemeService} from '../../services/theme.service';
   import {ToastController} from '@ionic/angular';
@@ -10,7 +10,7 @@
     styleUrls: ['./settings.page.scss'],
   })
 
-  export class SettingsPage {
+  export class SettingsPage implements OnInit {
     username = localStorage.getItem('username');
     theme: 'dark' | 'light' | 'auto' = 'auto';
     profilePicture : any = 'assets/images/default-picture-profile.jpeg';
@@ -19,6 +19,10 @@
       if (localStorage.getItem('profilePicture')) {
         this.profilePicture = localStorage.getItem('profilePicture');
       }
+  }
+
+  ngOnInit() {
+    this.storageService.onChangeUsername();
   }
 
     /*toggleTheme(theme: 'dark' | 'light' | 'auto') {

@@ -19,10 +19,14 @@ export class AppComponent implements OnInit {
 
   username!: string ;
   oUsername! : Observable<string>;
+  profilePicture : any = 'assets/images/default-picture-profile.jpeg';
 
   constructor(private router: Router, private storageService: StorageService) {
-    //this.storageService.currentUsername.subscribe(username => this.username = username);
     this.oUsername = this.storageService.currentUsername;
+
+    if (localStorage.getItem('profilePicture')) {
+      this.profilePicture = localStorage.getItem('profilePicture');
+    }
   }
 
 
@@ -30,7 +34,7 @@ export class AppComponent implements OnInit {
     this.storageService.currentUsername.subscribe(username => this.username = username);
 
     if (localStorage.getItem('navigateToDiscover') === 'true') {
-      localStorage.removeItem('navigateToDiscover'); // Clear the flag
+      localStorage.removeItem('navigateToDiscover');
       this.router.navigate(['/discover']);
     }
   }

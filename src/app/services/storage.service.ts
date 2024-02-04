@@ -14,7 +14,6 @@ export class StorageService {
 
   constructor(private storage: Storage) {
     this.init()
-    //onChangeUsername()
   }
 
   async init(){
