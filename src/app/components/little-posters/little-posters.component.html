@@ -1,10 +1,13 @@
 <ion-grid [fixed]="true">
   <ion-row>
     <ion-col *ngFor="let media of medias">
-      <!-- Utilisation d'un bouton pour gérer le clic -->
         <ion-card>
           <ion-img (click)="openDetailsModal(media)" [src]="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + media.poster_path"></ion-img>
         </ion-card>
     </ion-col>
   </ion-row>
 </ion-grid>
+
+<ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

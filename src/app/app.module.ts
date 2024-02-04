@@ -14,6 +14,7 @@ import { ViewDetailsComponent } from './components/view-details/view-details.com
 import { NgOptimizedImage } from '@angular/common';
 import {DiscoverPageModule} from './pages/discover/discover.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { Keyboard } from '@capacitor/keyboard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -40,4 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+    constructor() {
+        Keyboard.setAccessoryBarVisible({isVisible: false});
+    }
+}

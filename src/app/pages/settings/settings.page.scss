@@ -1,11 +1,12 @@
+ion-content {
+  --overflow: hidden;
+}
 
 .settings-card {
 
+
   width:auto;
   margin: 10px 18.5px;
-
-
-
 
   ion-card-content {
     display: flex;
@@ -79,11 +80,13 @@
 
 
 .footer-content{
+  position: fixed;
   bottom:0;
   text-align: center;
   color: var(--ion-color-medium);
   padding: 20px;
 }
+
 
 ion-footer{
   bottom:0;

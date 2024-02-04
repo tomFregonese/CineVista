@@ -1,7 +1,8 @@
-  import { Component } from '@angular/core';
-  import { LoadingController } from '@ionic/angular';
-  import { Router } from '@angular/router';
+  import {Component, OnInit} from '@angular/core';
   import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+  import {ThemeService} from '../../services/theme.service';
+  import {ToastController} from '@ionic/angular';
+  import {StorageService} from '../../services/storage.service';
 
   @Component({
     selector: 'app-settings',
@@ -9,55 +10,48 @@
     styleUrls: ['./settings.page.scss'],
   })
 
-  export class SettingsPage {
-    // Propriété pour stocker le thème actuel
-    theme: string = 'light'; // Valeur par défaut pour le thème
-    avatarUrl: string | null = null; //  propriété avatarUrl
+  export class SettingsPage implements OnInit {
+    username = localStorage.getItem('username');
+    theme: 'dark' | 'light' | 'auto' = 'auto';
+    profilePicture : any = 'assets/images/default-picture-profile.jpeg';
 
-    constructor(
-      private loadingCtrl: LoadingController,
-      private router: Router
-    ) {
-      // Chargez le thème préféré de l'utilisateur au démarrage
-      this.loadPreferredTheme();
+    constructor(private themeService : ThemeService, private toastController: ToastController, private storageService: StorageService) {
+      if (localStorage.getItem('profilePicture')) {
+        this.profilePicture = localStorage.getItem('profilePicture');
+      }
+  }
+
+  ngOnInit() {
+    this.storageService.onChangeUsername();
+  }
+
+    /*toggleTheme(theme: 'dark' | 'light' | 'auto') {
+      this.themeService.setTheme(theme)
+    }*/
+
+    onUsernameChange() {
+      if (this.username) {
+        localStorage.setItem('username', this.username);
+      } else {
+        localStorage.removeItem('username');
+      }
+      this.storageService.onChangeUsername();
     }
 
-
-    // Méthode pour charger le thème préféré de l'utilisateur
-    loadPreferredTheme() {
-      const savedTheme = localStorage.getItem('preferredTheme') || 'light'; // 'light' est la valeur par défaut
-      this.theme = savedTheme;
-      // Appliquez le thème ici, si nécessaire
-    }
-
-    // Méthode pour gérer le changement de thème
-    onThemeChange(selectedTheme: string) {
-      this.theme = selectedTheme;
-      this.savePreferredTheme(selectedTheme);
-      // Appliquez le thème ici, si nécessaire
-    }
-
-    // Méthode pour sauvegarder le thème préféré de l'utilisateur
-    savePreferredTheme(theme: string) {
-      localStorage.setItem('preferredTheme', theme);
-    }
-
-    // Méthode pour redémarrer l'application
-    async loadingRestart() {
-      const loading = await this.loadingCtrl.create({
-        message: 'Redémarrage dans 3 secondes...',
-        duration: 3000,
+    async presentToast() {
+      const toast = await this.toastController.create({
+        message: 'Redémarrage de l\'application !',
+        duration: 1500,
+        position: 'bottom',
       });
-
-      await loading.present();
-
-      loading.onDidDismiss().then(() => {
-        // Définir un paramètre dans le stockage local avant de recharger
+      toast.onDidDismiss().then(() => {
         localStorage.setItem('navigateToDiscover', 'true');
-        // Recharger l'application
         window.location.reload();
       });
+      await toast.present();
     }
+
+
 
     async takeOrChoosePhoto() {
       try {
@@ -66,19 +60,15 @@
           allowEditing: false,
           resultType: CameraResultType.DataUrl,
           source: CameraSource.Prompt,
-          saveToGallery: true,
+          saveToGallery: false,
           correctOrientation: true
         });
-
-        // Vérifiez si image.dataUrl n'est pas undefined avant de l'assigner
         if (image.dataUrl) {
-          this.avatarUrl = image.dataUrl;
-        } else {
-          // Gérez le cas où aucune image n'est retournée
-          console.log("Aucune image sélectionnée ou erreur lors de la prise de photo");
+          localStorage.setItem('profilePicture', image.dataUrl);
+          this.profilePicture = image.dataUrl;
         }
       } catch (error) {
-        console.error('Erreur lors de la prise ou du choix de la photo:', error);
+        console.error('Error while taking or choosing the photo:', error);
       }
     }
 
