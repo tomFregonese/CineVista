@@ -17,6 +17,7 @@ export class SeriesPage implements OnInit {
   constructor(private service: TmdbService) { }
   public series!: any[];
   ngOnInit() {
+
     this.service.getDiscover('tv').subscribe(response => {
       console.log(response);
       this.series = response.results;

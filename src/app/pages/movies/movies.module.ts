@@ -20,3 +20,4 @@ import {DiscoverPageModule} from '../discover/discover.module';
   declarations: [MoviesPage]
 })
 export class MoviesPageModule {}
+

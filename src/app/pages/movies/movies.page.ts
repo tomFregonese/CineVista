@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TmdbService} from '../../services/tmdb.service';
+import { TmdbService } from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-movies',
@@ -8,7 +8,7 @@ import {TmdbService} from '../../services/tmdb.service';
 })
 export class MoviesPage implements OnInit {
 
-  constructor(private service: TmdbService) { }
+  constructor(private service: TmdbService) { } // Ajoutez globalService ici
   protected movies!: any[];
 
   ngOnInit() {
@@ -17,5 +17,4 @@ export class MoviesPage implements OnInit {
       this.movies = response.results;
     });
   }
-
 }

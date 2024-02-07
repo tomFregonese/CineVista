@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { TmdbService } from '../../services/tmdb.service';
 import { ModalController } from '@ionic/angular';
-import { ViewDetailsComponent } from '../view-details/view-details.component';
-
-
+import { ViewDetailsComponent } from '../view-details/view-details.component'; // Ajustez le chemin selon votre structure de projet
 
 @Component({
   selector: 'app-little-posters',
@@ -11,19 +8,15 @@ import { ViewDetailsComponent } from '../view-details/view-details.component';
   styleUrls: ['./little-posters.component.scss'],
 })
 export class LittlePostersComponent {
-
   @Input() public medias!: any[];
 
-  constructor(
-    private _tmdbService: TmdbService,
-    public modalController: ModalController
-  ) {}
+  constructor(public modalController: ModalController) {}
 
   async openDetailsModal(media: any) {
     const modal = await this.modalController.create({
       component: ViewDetailsComponent,
       componentProps: { selectedMedia: media }
     });
-    return await modal.present();
+    await modal.present();
   }
 }

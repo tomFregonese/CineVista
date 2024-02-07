@@ -20,10 +20,6 @@ export class DiscoverPage implements OnInit {
     });
   }
 
-  
-
-
-
 
   protected readonly SeriesPage = SeriesPage;
 }
