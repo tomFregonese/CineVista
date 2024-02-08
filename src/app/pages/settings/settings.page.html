@@ -8,17 +8,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+    <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Paramètres</ion-title>
+        <ion-title size="large">Paramètres</ion-title>
     </ion-toolbar>
-  </ion-header>
+    </ion-header>
 
-  <ion-avatar (click)="takeOrChoosePhoto()">
-
-    <img [src]="avatarUrl" />
-
-  </ion-avatar>
+    <ion-avatar (click)="takeOrChoosePhoto()">
+        <img [src]="profilePicture" alt="Profile Picture" />
+    </ion-avatar>
+    <ion-item class="ion-text-center width-50">
+        <ion-input type="text" [(ngModel)]="username" (ngModelChange)="onUsernameChange()"
+                   placeholder="Nom"></ion-input>
+    </ion-item>
 
 
   <!-- Carte pour modifier le thème d'affichage -->
@@ -26,11 +28,12 @@
     <ion-card-content>
       <ion-item lines="none">
         <ion-label class="settings-label"><b>Modifier le thème par défaut</b></ion-label>
+        <!--<ion-segment [(ngModel)]="theme" (ionChange)="toggleTheme(theme)">-->
         <ion-segment [(ngModel)]="theme">
           <ion-segment-button value="light">
             <ion-label>Clair</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="system">
+          <ion-segment-button value="auto">
             <ion-label>Système</ion-label>
           </ion-segment-button>
           <ion-segment-button value="dark">
@@ -61,7 +64,8 @@
         </b></ion-button>
       </ion-col>
       <ion-col size="9">
-        <ion-button (click)="loadingRestart()" expand="block" color="light"><b>Redémarrer l'application</b></ion-button>
+          <ion-button expand="block" (click)="presentToast()" color="light"
+          ><b>Redémarrer l'application</b></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

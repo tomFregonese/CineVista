@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {StorageService} from './services/storage.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +17,26 @@ export class AppComponent implements OnInit {
     { title: 'Profile', url: '/profile', icon: 'person-circle' }
   ];
 
-  constructor(private router: Router) {}
+  username!: string ;
+  oUsername! : Observable<string>;
+  profilePicture : any = 'assets/images/default-picture-profile.jpeg';
+
+  constructor(private router: Router, private storageService: StorageService) {
+    this.oUsername = this.storageService.currentUsername;
+
+    if (localStorage.getItem('profilePicture')) {
+      this.profilePicture = localStorage.getItem('profilePicture');
+    }
+  }
+
 
   ngOnInit() {
-    // Check if the application needs to navigate to '/discover'
+    this.storageService.currentUsername.subscribe(username => this.username = username);
+
     if (localStorage.getItem('navigateToDiscover') === 'true') {
-      localStorage.removeItem('navigateToDiscover'); // Clear the flag
+      localStorage.removeItem('navigateToDiscover');
       this.router.navigate(['/discover']);
     }
   }
+
 }

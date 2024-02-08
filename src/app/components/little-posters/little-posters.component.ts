@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { ViewDetailsComponent } from '../view-details/view-details.component'; // Ajustez le chemin selon votre structure de projet
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {InfiniteScrollCustomEvent, ModalController} from '@ionic/angular';
+import { ViewDetailsComponent } from '../view-details/view-details.component';
+
 
 @Component({
   selector: 'app-little-posters',
@@ -8,9 +9,19 @@ import { ViewDetailsComponent } from '../view-details/view-details.component'; /
   styleUrls: ['./little-posters.component.scss'],
 })
 export class LittlePostersComponent {
-  @Input() public medias!: any[];
 
-  constructor(public modalController: ModalController) {}
+  @Input() public medias!: any[];
+  @Output() public ionInfinite: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(
+      public modalController: ModalController
+  ) {}
+
+
+  onIonInfinite(ev: InfiniteScrollCustomEvent) {
+    this.ionInfinite.emit(ev);
+  }
+
 
   async openDetailsModal(media: any) {
     const modal = await this.modalController.create({
