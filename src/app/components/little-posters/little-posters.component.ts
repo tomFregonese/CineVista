@@ -9,6 +9,7 @@ import { ViewDetailsComponent } from '../view-details/view-details.component';
   styleUrls: ['./little-posters.component.scss'],
 })
 export class LittlePostersComponent {
+
   @Input() public medias!: any[];
   @Output() public ionInfinite: EventEmitter<any> = new EventEmitter<any>();
 
@@ -27,6 +28,6 @@ export class LittlePostersComponent {
       component: ViewDetailsComponent,
       componentProps: { selectedMedia: media }
     });
-    return await modal.present();
+    await modal.present();
   }
 }

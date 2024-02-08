@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TmdbService} from '../../services/tmdb.service';
-import {InfiniteScrollCustomEvent} from '@ionic/angular';
+import { TmdbService } from '../../services/tmdb.service';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-movies',

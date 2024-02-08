@@ -3,76 +3,81 @@
 /* Style pour la barre d'en-tête */
 ion-toolbar {
   --ion-color-primary: white; /* Couleur de la barre d'en-tête */
-  border: 1px solid black;
+  border: 1px solid black; /* Bordure de la barre d'en-tête */
 }
 
 /* Style pour le bouton de retour */
 ion-icon {
   fill: black; /* Couleur du bouton de retour */
-  margin-right: 10px; /* Marge à droite */
+  margin-right: 10px; /* Marge à droite du bouton */
 }
 
 /* Style pour la popup de détails */
 .details-popup {
   margin: 16px; /* Marge autour de la popup */
-  background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond semi-transparente pour l'arrière-plan */
+  background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond semi-transparente pour l'arrière-plan de la popup */
 }
 
-/* Style pour le contenu */
+/* Style pour le contenu de la popup */
 .details-content {
   max-width: 500px; /* Largeur maximale de la fenêtre contextuelle */
   margin: auto; /* Centrer la fenêtre contextuelle horizontalement */
-  padding: 16px; /* Espacement interne */
-  border-radius: 4px; /* Coins arrondis */
-  text-align: center; /* Centrer le texte */
+  padding: 16px; /* Espacement interne du contenu */
+  border-radius: 4px; /* Coins arrondis du contenu */
+  text-align: center; /* Centrer le texte du contenu */
 }
 
 /* Style pour la carte d'affichage des détails */
 .details-card {
   margin: 0 auto; /* Centrer la carte horizontalement */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère de la carte */
 }
 
 /* Style pour le titre */
 ion-card-title {
-  font-size: 20px; /* Taille de la police */
-  text-align: left; /* Alignement du texte à gauche */
-  margin-bottom: 5px;
+  font-size: 20px; /* Taille de la police du titre */
+  text-align: left; /* Alignement du texte à gauche du titre */
+  margin-bottom: 5px; /* Marge en bas du titre */
 }
 ion-card-subtitle {
-  text-align: left; /* Alignement du texte à gauche */
+  text-align: left; /* Alignement du texte à gauche du sous-titre */
 }
-
 
 /* Style pour l'image */
 ion-img {
   margin: 20px; /* Marge autour de l'image */
   max-width: 100%; /* Largeur maximale de l'image */
-  border-radius: 20px; /* Coins arrondis */
+  border-radius: 20px; /* Coins arrondis de l'image */
 }
 
 /* Style pour la description */
 .overview {
-  padding-left : 30px; /* Espacement interne */
-  padding-right : 30px; /* Espacement interne */
-  text-align: left; /* Alignement du texte à gauche */
+  padding-left: 30px; /* Espacement interne à gauche de la description */
+  padding-right: 30px; /* Espacement interne à droite de la description */
+  text-align: left; /* Alignement du texte à gauche de la description */
 }
 
 .details-card-title {
-  padding-left : 30px; /* Espacement interne */
-  padding-right : 30px; /* Espacement interne */
-  font-size: 20px; /* Taille de la police */
-  text-align: left; /* Alignement du texte à gauche */
+  padding-left: 30px; /* Espacement interne à gauche du titre de la carte */
+  padding-right: 30px; /* Espacement interne à droite du titre de la carte */
+  font-size: 20px; /* Taille de la police du titre de la carte */
+  text-align: left; /* Alignement du texte à gauche du titre de la carte */
 }
 
+/* Style pour l'icône de cœur (favori) */
 .heart-icon {
-  fill: white; /* Couleur de l'icône */
-  margin-right : 10px; /* Marge à droite */
+  fill: white; /* Couleur de l'icône de cœur */
+  margin-right: 10px; /* Marge à droite de l'icône de cœur */
 }
 
+/* Style pour le bouton "Add to Favorites" */
 ion-button {
-  --background: #ff0000; /* Couleur de fond du bouton */
+  --background: #6da0da; /* Couleur de fond du bouton */
   --color: white; /* Couleur du texte du bouton */
-  margin-top: 20px; /* Marge au-dessus du bouton */
-  margin-bottom: 20px; /* Marge en dessous du bouton */
+}
+
+.default-image {
+  height: 160px; /* Hauteur automatique pour maintenir le ratio */
+  object-fit: cover; /* Rognage pour couvrir toute la zone de l'image */
+  border-radius: 20px; /* Coins arrondis */
 }

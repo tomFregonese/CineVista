@@ -8,6 +8,12 @@ import {InfiniteScrollCustomEvent} from '@ionic/angular';
   styleUrls: ['./series.page.scss'],
 })
 export class SeriesPage implements OnInit {
+  static openModal(id: number) {
+    throw new Error('Method not implemented.');
+  }
+  static openSeriesPage(id: number) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private _tmdbService: TmdbService) { }
   public series!: any[];

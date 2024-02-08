@@ -9,24 +9,35 @@ import { ModalController } from '@ionic/angular';
 export class ViewDetailsComponent implements OnInit {
   @Input() selectedMedia: any;
 
-  constructor(private modalController: ModalController) {} // Injectez le ModalController dans le constructeur
+  constructor(
+    private modalController: ModalController
+      ) {}
 
   ngOnInit() {
     console.log('Media Details:', this.selectedMedia);
   }
 
-  trimLeadingSpace(str: string): string {
-    return str ? str.replace(/^\s+/g, '') : '';
+  dismissModal() {
+    this.modalController.dismiss();
   }
 
-  addToFavorites() {
-    // Code pour gérer l'ajout aux favoris
-    // Vous pouvez implémenter la logique d'ajout aux favoris ici
+  async shareMedia() {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: this.selectedMedia?.title || this.selectedMedia?.name,
+          text: `Check out this ${this.selectedMedia?.media_type}: "${this.selectedMedia?.title || this.selectedMedia?.name}"`,
+          url: `https://www.themoviedb.org/${this.selectedMedia?.media_type}/${this.selectedMedia?.id}`,
+        });
+        console.log('Media shared successfully');
+      } catch (error) {
+        console.error('Error sharing media', error);
+      }
+    } else {
+      console.log('Web Share API not supported');
+    }
   }
 
-  async closeDetails() {
-    // Utilisez le ModalController pour fermer le modal
-    await this.modalController.dismiss();
-  }
-  // ... autres méthodes
+
+
 }

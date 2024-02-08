@@ -1,37 +1,66 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ selectedMedia?.title || selectedMedia?.name }}</ion-title>
     <ion-buttons slot="end">
-      <ion-icon name="close" (click)="closeDetails()"></ion-icon>
+      <ion-button >
+          <app-fav-button [media]="selectedMedia"></app-fav-button>
+      </ion-button>
+      <ion-button (click)="shareMedia()">
+        <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="details-content">
-  <div class="details-card-container">
-    <ion-card class="details-card">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="5">
-            <ion-img [src]="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + selectedMedia.poster_path"></ion-img>
-          </ion-col>
-          <ion-col size="7">
-            <ion-card-content>
-              <ion-card-title>{{ (selectedMedia.title || selectedMedia.name)?.trim() }}</ion-card-title>
-              <ion-card-subtitle>Released on {{ selectedMedia.release_date || selectedMedia.first_air_date | date:'dd/MM/yyyy' }}</ion-card-subtitle>
-              <ion-card-subtitle>Recommended at {{ selectedMedia.vote_average * 10 | number:'1.0-0' }}%</ion-card-subtitle>
-              <app-fav-button [media]="selectedMedia"></app-fav-button>
-            </ion-card-content>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-  </div>
-  <div class="details-card-container">
-    <ion-card class="details-card">
-      <p class="details-card-title">Synopsis</p>
-      <p class="overview">{{ selectedMedia.overview }}</p>
-    </ion-card>
-  </div>
+<ion-content fullscreen>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ selectedMedia?.release_date || selectedMedia?.first_air_date | date:'dd/MM/yyyy' }}</ion-card-subtitle>
+      <ion-card-title>{{ selectedMedia?.title || selectedMedia?.name }}</ion-card-title>
+      <ion-card-subtitle>
+        {{ selectedMedia?.media_type || '' }}
+      </ion-card-subtitle>
+
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img *ngIf="selectedMedia?.backdrop_path" [src]="'https://image.tmdb.org/t/p/original/' + selectedMedia?.backdrop_path"></ion-img>
+
+      <ion-img class="default-image" *ngIf="!selectedMedia?.backdrop_path" src="assets/images/no_image.png"></ion-img>
+
+      <br><br>
+      <p>{{ selectedMedia?.overview }}</p>
+  </ion-card-content>
+
+
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4">
+        <ion-item lines="none">
+          <ion-icon slot="start" name="star-outline"></ion-icon>
+          <ion-label>Rating: {{ selectedMedia?.vote_average | number:'1.0-0'}}/10</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" size-md="4">
+        <ion-item lines="none">
+          <ion-icon slot="start" name="time-outline"></ion-icon>
+          <ion-label>Time: {{ selectedMedia?.runtime || 'x'}} mins</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-chip color="secondary" outline *ngFor="let genre of selectedMedia?.genres">
+          <ion-label>{{ genre.name }}</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
-
-
