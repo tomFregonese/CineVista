@@ -18,8 +18,7 @@
         <img [src]="profilePicture" alt="Profile Picture" />
     </ion-avatar>
     <ion-item class="ion-text-center width-50">
-        <ion-input type="text" [(ngModel)]="username" (ngModelChange)="onUsernameChange()"
-                   placeholder="Nom"></ion-input>
+        <ion-input type="text" [(ngModel)]="username" (ngModelChange)="onUsernameChange()" placeholder="Nom"></ion-input>
     </ion-item>
 
 
@@ -64,8 +63,8 @@
         </b></ion-button>
       </ion-col>
       <ion-col size="9">
-          <ion-button expand="block" (click)="presentToast()" color="light"
-          ><b>Redémarrer l'application</b></ion-button>
+          <ion-button expand="block" (click)="presentToast()" color="light">
+              <b>Redémarrer l'application</b></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

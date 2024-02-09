@@ -9,7 +9,6 @@ import { DiscoverPageRoutingModule } from './discover-routing.module';
 import { DiscoverPage } from './discover.page';
 import {LittlePostersComponent} from '../../components/little-posters/little-posters.component';
 import {FavButtonComponent} from '../../components/fav-button/fav-button.component';
-
 @NgModule({
   imports: [
     CommonModule,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SeriesPage} from '../series/series.page';
 import {TmdbService} from '../../services/tmdb.service';
 import {InfiniteScrollCustomEvent} from '@ionic/angular';
 
@@ -11,7 +10,7 @@ import {InfiniteScrollCustomEvent} from '@ionic/angular';
 export class DiscoverPage implements OnInit {
 
   protected medias!: any[];
-
+  searchQuery: string = '';
   constructor(private _tmdbService: TmdbService) { }
 
   ngOnInit() {
@@ -31,6 +30,12 @@ export class DiscoverPage implements OnInit {
     });
   }
 
-  protected readonly SeriesPage = SeriesPage;
+  searchAMedia(query: string) {
+    this._tmdbService.getSearchResults('multi', query, 1).subscribe(response => {
+      console.log(response);
+      this.medias = response.results;
+    });
+  }
+
 }
 

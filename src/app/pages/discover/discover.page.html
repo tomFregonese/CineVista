@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Discover</ion-title>
+      <ion-title>Discover</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -13,5 +13,6 @@
             <ion-title size="large">Discover</ion-title>
         </ion-toolbar>
     </ion-header>
-    <app-little-posters [medias]="medias" (ionInfinite)="loadMoreMedias($event)"></app-little-posters>
+    <ion-searchbar animated="true" [(ngModel)]="searchQuery" (keyup)="searchAMedia(searchQuery)" placeholder="Search for a media 🧐"></ion-searchbar>
+    <app-little-posters [medias]="medias"></app-little-posters>
 </ion-content>
