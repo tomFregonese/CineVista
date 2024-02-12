@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
     { title: 'Movies', url: '/movies', icon: 'film' },
     { title: 'Series', url: '/series', icon: 'tv' },
     { title: 'Favorites', url: '/favorites', icon: 'heart' },
-    { title: 'Profile', url: '/profile', icon: 'person-circle' }
   ];
 
   username!: string ;

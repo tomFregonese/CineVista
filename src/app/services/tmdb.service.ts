@@ -36,8 +36,8 @@ export class TmdbService {
     return this.httpClient.get(url, { headers: this.headers });
   }
 
-  getSearchResults(searchType: 'multi' | 'movie' | 'tv'): Observable<any> {
-    const url = `${this.tmdbBaseUrl}/3/search/${searchType}`;
+  getSearchResults(searchType: 'multi' | 'movie' | 'tv', query: string, pageNb: number): Observable<any> {
+    const url = `${this.tmdbBaseUrl}/3/search/${searchType}?query=${encodeURIComponent(query)}&page=${pageNb}`;
 
     return this.httpClient.get(url, { headers: this.headers });
   }
