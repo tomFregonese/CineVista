@@ -23,3 +23,26 @@ ion-img {
   margin: 0;
   padding: 0;
 }
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-img {
+  width: 100%; /* Ajustez la largeur comme nécessaire */
+  height: auto; /* Ajustez la hauteur comme nécessaire */
+}
+
+.image-overlay {
+  position: absolute;
+  text-align: center;
+  color: white; /* Couleur du texte */
+  font-size: 0.8rem; /* Taille du texte */
+  padding: 5px; /* Espacement autour du texte */
+  background-color: transparent; /* Fond semi-transparent pour améliorer la lisibilité */
+  border-radius: 5px; /* Bords arrondis */
+}
+

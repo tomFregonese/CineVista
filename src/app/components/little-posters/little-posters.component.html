@@ -2,7 +2,10 @@
   <ion-row>
     <ion-col *ngFor="let media of medias">
       <ion-card>
-        <ion-img (click)="openDetailsModal(media)" [src]="media.poster_path ? 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + media.poster_path : 'assets/images/no_image.png'"></ion-img>
+        <div class="image-container">
+          <ion-img (click)="openDetailsModal(media)" [src]="media.poster_path ? 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + media.poster_path : 'assets/images/no_image.png'"></ion-img>
+          <ion-label *ngIf="!media.poster_path" class="image-overlay">{{ media.title || media.name }}</ion-label>
+        </div>
       </ion-card>
     </ion-col>
   </ion-row>

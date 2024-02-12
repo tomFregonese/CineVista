@@ -31,7 +31,7 @@
     <ion-card-content>
       <ion-img *ngIf="selectedMedia?.backdrop_path" [src]="'https://image.tmdb.org/t/p/original/' + selectedMedia?.backdrop_path"></ion-img>
 
-      <ion-img class="default-image" *ngIf="!selectedMedia?.backdrop_path" src="assets/images/no_image.png"></ion-img>
+      <ion-img class="default-image" *ngIf="!selectedMedia?.backdrop_path" src="assets/images/no_image_for_details.png"></ion-img>
 
       <br><br>
       <p>{{ selectedMedia?.overview }}</p>
