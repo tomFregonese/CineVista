@@ -14,5 +14,5 @@
         </ion-toolbar>
     </ion-header>
     <ion-searchbar animated="true" [(ngModel)]="searchQuery" (keyup)="searchAMedia(searchQuery)" placeholder="Search for a media 🧐"></ion-searchbar>
-    <app-little-posters [medias]="medias"></app-little-posters>
+    <app-little-posters [medias]="medias" [showInfiniteScroll]="false" ></app-little-posters>
 </ion-content>

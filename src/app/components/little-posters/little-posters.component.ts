@@ -10,6 +10,7 @@ import { ViewDetailsComponent } from '../view-details/view-details.component';
 })
 export class LittlePostersComponent {
 
+  @Input() showInfiniteScroll = true;
   @Input() public medias!: any[];
   @Output() public ionInfinite: EventEmitter<any> = new EventEmitter<any>();
 

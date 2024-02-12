@@ -13,5 +13,6 @@
       <ion-title size="large">Movies</ion-title>
     </ion-toolbar>
   </ion-header>
-    <app-little-posters [medias]="movies" (ionInfinite)="loadMoreMedias($event)"></app-little-posters>
+    <app-little-posters [medias]="movies" [showInfiniteScroll]="true"
+                        (ionInfinite)="loadMoreMedias($event)"></app-little-posters>
 </ion-content>
