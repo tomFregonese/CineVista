@@ -142,13 +142,14 @@ ion-menu {
 //   border-radius:30px ;
 // }
 
-.logo::part(image) {
+ion-avatar {
+
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left:auto;
   margin-right:10px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: black;
+
+  background-size: cover;
 }
