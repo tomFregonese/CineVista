@@ -10,6 +10,7 @@ ion-content {
 
   ion-card-header {
     background-color: var(--ion-color-light);
+    padding-bottom: 0;
     ion-card-title {
       font-weight: bold;
       text-align: center;
@@ -121,4 +122,13 @@ ion-avatar{
 ion-grid{
   margin-left: 5px;
   margin-right: 5px;
+}
+
+ion-input{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+ion-item{
+  --border-style: none;
 }

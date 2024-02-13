@@ -1,2 +1,15 @@
 <i class="fa fa-search" (click)="toggleSearch()"></i>
-<ion-searchbar animated="true" *ngIf="isSearchVisible" placeholder="Search..."></ion-searchbar>
+<ion-searchbar *ngIf="isSearchVisible" animated="true" placeholder="Search..."></ion-searchbar>
+
+
+<!-- <ion-segment (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="films">
+    <ion-label>Films</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="series">
+    <ion-label>Séries</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="people">
+    <ion-label>Personnes</ion-label>
+  </ion-segment-button>
+</ion-segment> -->
