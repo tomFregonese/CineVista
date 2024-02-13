@@ -3,7 +3,9 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list-header>
-            <ion-img class="logo" [src]="profilePicture" alt="Profile picture"></ion-img>
+            <ion-avatar>
+              <ion-img class="logo" [src]="profilePicture" alt="Profile picture"></ion-img>
+            </ion-avatar>
             <p>Ciné vista </p>
             <br/>
             <p *ngIf="username"> &nbsp; — &nbsp;{{ username }}</p>
