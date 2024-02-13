@@ -24,9 +24,11 @@
 
   <!-- Carte pour modifier le thème d'affichage -->
   <ion-card class="settings-card">
+      <ion-card-header>
+          <ion-card-title>Modifier le thème par défaut</ion-card-title>
+      </ion-card-header>
     <ion-card-content>
       <ion-item lines="none">
-        <ion-label class="settings-label"><b>Modifier le thème par défaut</b></ion-label>
         <!--<ion-segment [(ngModel)]="theme" (ionChange)="toggleTheme(theme)">-->
         <ion-segment [(ngModel)]="theme">
           <ion-segment-button value="light">
@@ -45,9 +47,11 @@
 
  <!-- Carte pour modifier la langue -->
   <ion-card class="settings-card">
+        <ion-card-header>
+            <ion-card-title>Modifier la langue</ion-card-title>
+        </ion-card-header>
     <ion-card-content>
       <ion-item lines="none">
-        <ion-label class="settings-label"><b>Modifier la langue</b></ion-label>
         <div class="language-toggle">
           <ion-button>FR</ion-button>
           <ion-button>EN</ion-button>
@@ -72,7 +76,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer class="footer">
   <p>Conditions d'utilisation et politique de confidentialité.</p>
   <p >v1.0</p>
 </ion-footer>

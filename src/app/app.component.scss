@@ -135,8 +135,20 @@ ion-menu {
 
 }
 
+// .logo::part(image) {
+//   width: 30px;
+//   height: 40px;
+//   margin-right: 10px;
+//   border-radius:30px ;
+// }
+
 .logo::part(image) {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left:auto;
+  margin-right:10px;
   width: 30px;
-  margin-right: 10px;
-  border-radius:30px ;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
 }

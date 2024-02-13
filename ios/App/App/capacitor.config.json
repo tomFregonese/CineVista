@@ -1,0 +1,8 @@
+{
+	"appId": "chamanier.fregonese.cinevista",
+	"appName": "Ciné vista",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https"
+	}
+}
